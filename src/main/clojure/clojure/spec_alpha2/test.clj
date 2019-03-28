@@ -113,7 +113,7 @@ failure in instrument."
 
 (defn- spec-checking-fn
   [v f fn-spec]
-  (let [fn-spec (@#'clojure.spec-alpha2.impl/maybe-spec fn-spec)
+  (let [fn-spec (@(resolve 'clojure.spec-alpha2.impl/maybe-spec) fn-spec)
         conform! (fn [v role spec data args]
                    (let [conformed (s/conform spec data)]
                      (if (= ::s/invalid conformed)
